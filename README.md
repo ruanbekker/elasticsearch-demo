@@ -119,6 +119,42 @@ See [troubleshooting cluster states]() for troubleshooting clusters with the men
 
 Overview
 
+### Overview: Nodes
+
+We can use the `/_cat/nodes` api to get information about our nodes that is part of the elasticsearch cluster:
+
+```
+$ curl http://localhost:9200/_cat/nodes?v
+ip           heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+192.168.96.4           54          97  28    3.38    1.84     0.81 mdi       -      qvLUSOI
+192.168.96.2           53          96  28    3.38    1.84     0.81 mdi       *      g3epoJh
+```
+
+We can also see the following from the output:
+
+- The IP Address and Node Name
+- The heap, ram, load and cpu utilization
+- The node role, in this case our nodes are masters, data and ingestion types
+- Also see which node is master
+
+We can also see node specific information such as jvm, thread pool, process, plugin information etc, by using calling the node id on the `/_nodes` api:
+
+```
+$ curl http://localhost:9200/_nodes/qvLUSOI?pretty
+```
+
+Then we can see node stats, such as indexing, merges, http requests, disk space, etc by using stats on the `/_nodes/{node_id}/stats` api:
+
+```
+$ curl http://localhost:9200/_nodes/qvLUSOI/stats?pretty
+...
+        "threads" : {
+          "count" : 47,
+          "peak_count" : 48
+        },
+...
+```
+
 ### Overview: Indexes
 
 Get the status of your indexes, with the following output you will find the following:
