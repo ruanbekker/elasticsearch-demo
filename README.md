@@ -5,13 +5,15 @@ Tutorial on Getting Started with Elasticsearch
 
 ## Table of Contents
 
-- [#pre-requirements](#pre-requirements)
+- [Pre Requirements](#pre-requirements)
   - [Installing Elasticsearch on Docker](#1-provision-elasticsearch)
   - [Loading Test Data](#2-load-data)
+
 - [Understanding Elasticsearch](#undestanding-elasticsearch)
   - [What is Elasticsearch](#what-is-elasticsearch)
   - [What do you do with Elasticsearch](#what-do-you-do-with-elasticsearch)
   - [Elasticsearch Concepts](#elasticsearch-concepts)
+
 - [Lab 1: Using the API to see the Nodes, Index, Shards](#lab-1-overview-of-index-nodes-shards)
 
 ## Pre-Requirements
