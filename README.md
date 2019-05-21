@@ -37,9 +37,25 @@ $ curl http://localhost:9200/_cluster/health?pretty
 ### 2) Load Data
 
 ```
-$ curl -s -H "Content-Type: application/json" -XPOST localhost:9200/people/docs/_bulk --data-binary "@datasets/people2.json"
+$ curl -s -H "Content-Type: application/json" -XPOST localhost:9200/people/docs/_bulk --data-binary "@datasets/people.json"
 ```
 
 ## Lab 1) Overview of Index, Nodes, Shards
 
- 
+Overview
+
+### Overview: Indexes
+
+Get the status of your indexes, with the following output you will find the following:
+
+- the status of your index
+- the index name, uuid
+- number of primary and replica shards
+- the number of documents your index is holding
+- the number of `strore.size` and `pri.store.size`
+
+```
+$ curl http://localhost:9200/_cat/indices?v
+health status index  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   people NGoTUMkSQw6gvklEm-cecg   5   1          3            0       460b           460b
+```
