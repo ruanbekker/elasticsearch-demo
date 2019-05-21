@@ -1,7 +1,8 @@
 version: '3'
 services:
-  elasticsearch:
+  elasticsearch1:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+    container_name: node1
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
@@ -10,9 +11,40 @@ services:
       memlock:
         soft: -1
         hard: -1
+    volumes:
+      - es_node1:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
+    networks:
+      - es_net
+
+  elasticsearch2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+    container_name: node2
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch1"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_node2:/usr/share/elasticsearch/data
+    networks:
+      - es_net
+
   kibana:
     image: docker.elastic.co/kibana/kibana:6.3.2
     ports:
       - "5601:5601"
+    networks:
+      - es_net
+
+volumes:
+  es_node1: {}
+  es_node2: {}
+
+networks:
+  es_net: {}
