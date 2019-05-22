@@ -9,7 +9,7 @@ Tutorial on Getting Started with Elasticsearch
   - [Installing Elasticsearch on Docker](#1-provision-elasticsearch)
   - [Loading Test Data](#2-load-data)
 
-- [Understanding Elasticsearch](#undestanding-elasticsearch)
+- [Understanding Elasticsearch](#understanding-elasticsearch)
   - [What is Elasticsearch](#what-is-elasticsearch)
   - [What do you do with Elasticsearch](#what-do-you-do-with-elasticsearch)
   - [Elasticsearch Concepts](#elasticsearch-concepts)
@@ -55,7 +55,7 @@ $ curl http://localhost:9200/_cluster/health?pretty
 $ curl -s -H "Content-Type: application/json" -XPOST localhost:9200/people/docs/_bulk --data-binary "@datasets/people.json"
 ```
 
-## Undestanding Elasticsearch
+## Understanding Elasticsearch
 
 ### What is Elasticsearch
 
